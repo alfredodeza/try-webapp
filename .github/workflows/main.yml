@@ -49,7 +49,7 @@ jobs:
       - name: Set Web App ACR authentication
         uses: Azure/appservice-settings@v1
         with:
-          app-name: 'node-rnc'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           app-settings-json: |
             [
                 {
