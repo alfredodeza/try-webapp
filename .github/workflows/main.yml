@@ -2,8 +2,7 @@ name: Trigger auto deployment for demo-container
 
 env:
   # !!!! UPDATE THE VARIABLE BELOW WITH YOUR APP NAME !!!!
-  AZURE_CONTAINER_APP_NAME: demo-huggingface
-  AZURE_GROUP_NAME: demo-huggingface
+  AZURE_WEBAPP_NAME: demo-huggingface
 
 # When this action will be executed
 on:
