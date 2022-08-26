@@ -61,6 +61,7 @@ jobs:
           inlineScript: |
             az config set extension.use_dynamic_install=yes_without_prompt
             az webapp config container set --docker-custom-image-name ghcr.io/${{ env.REPO }}:${{ github.sha }} --docker-registry-server-password ${{ secrets.PAT }} --docker-registry-server-user ${{ github.actor }} --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_GROUP_NAME }}
+            az webapp config appsettings set -g ${{ env.AZURE_GROUP_NAME }} -n ${{ env.AZURE_WEBAPP_NAME }} --settings WEBSITES_PORT=8000
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
