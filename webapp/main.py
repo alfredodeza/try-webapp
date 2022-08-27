@@ -1,5 +1,5 @@
+from datetime import datetime
 from os.path import dirname, abspath, join
-from transformers import pipeline
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -22,6 +22,10 @@ def root():
 
 
 @app.post('/generate')
-def predict(body: Body):
-    results = generator(body.text, max_length=35, num_return_sequences=1)
-    return results[0]
+def generate(body: Body):
+    """
+    Generate the current time given a strftime template. For example:
+    '%Y-%m-%dT%H:%M:%S.%f'
+    """
+    tmpl = body.text or '%Y-%m-%dT%H:%M:%S.%f'
+    return {'date': datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')}
