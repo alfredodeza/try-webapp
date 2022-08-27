@@ -4,7 +4,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-generator = pipeline('text-generation', model='openai-gpt2')
+generator = pipeline('text-generation', model='openai-gpt')
 
 app = FastAPI()
 app.mount("/ui", StaticFiles(directory="static"), name="ui")
